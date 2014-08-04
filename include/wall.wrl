@@ -1,0 +1,340 @@
+#VRML V2.0 utf8
+
+Background {
+	skyAngle [
+		1.2 1.8
+	]
+	skyColor [
+		1 0 0
+		0.8 0.5 0
+		1 1 1
+	]
+	groundAngle	[
+		1.2 1.3
+	]
+	groundColor	[
+		0.1 0.1 0.1
+		0.4 0.3 0.2
+		0.8 0.8 0.8
+	]
+}
+
+DEF	front Transform	{
+	translation	0 0 -28
+	children [
+		Transform {
+			children [
+				Shape {
+					appearance DEF wallap Appearance {
+						material Material {
+							#diffuseColor 0.6 0.4 0.2
+						}
+						texture	ImageTexture {
+							url	"..\res\textures\stone02.jpg"
+						}
+						textureTransform TextureTransform {
+							scale  10 10
+						}
+					}
+					geometry Box {
+						size 50 12 6
+					}
+				}
+				Inline {
+					#url	"..\..\Vrml Library\Architecture\Room Walls.wrl"
+				}
+			]
+		}
+
+		DEF w1 Transform {
+			translation	0 6 2.83
+			children [
+				Shape {
+					appearance USE wallap
+					geometry Box {
+						size 1 0.5 0.3
+					}
+				}
+			]
+		}
+
+		DEF	w4 Transform {
+			children [
+				DEF w2 Transform {
+					translation	2 0 0
+					children [
+						USE	w1
+						Transform {
+							translation	2 0 0
+							children [
+								USE	w1
+								Transform {
+									translation	2 0 0
+									children [
+										USE	w1
+										Transform {
+											translation	2 0 0
+											children [
+												USE	w1
+												Transform {
+													translation	2 0 0
+													children [
+														USE	w1
+														Transform {
+															translation	2 0 0
+															children [
+																USE	w1
+																Transform {
+																	translation	2 0 0
+																	children [
+																		USE	w1
+																		Transform {
+																			translation	2 0 0
+																			children [
+																				USE	w1
+																				Transform {
+																					translation	2 0 0
+																					children [
+																						USE	w1
+																						Transform {
+																							translation	2 0 0
+																							children [
+																								USE	w1
+																								Transform {
+																									translation	2 0 0
+																									children [
+																										USE	w1
+																										Transform {
+																											translation	2 0 0
+																											children [
+																												USE	w1
+																											]
+																										}
+																									]
+																								}
+																							]
+																						}
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+
+				DEF w3 Transform {
+					translation	-26 0 0
+					children [
+						USE	w2
+					]
+				}
+			]
+		}
+
+		DEF	w5 Transform {
+			translation	0 0 -5.6
+			children [
+				USE	w1
+				USE	w4
+			]
+		}
+		Transform {
+			translation	 -28 0 0
+			children [
+				Shape {
+					appearance USE wallap
+					geometry Box {
+						size 6 12 6
+					}
+				}
+				DEF w6 Transform {
+					translation	-2 0 -5.6
+					children [
+						USE	w1
+						Transform {
+							translation	2 0 0
+							children [
+								USE	w1
+								Transform {
+									translation	2 0 0
+									children [
+										USE	w1
+									]
+								}
+							]
+						}
+					]
+				}
+				Transform {
+					rotation 0 1 0 1.5707963267948966192313216916398
+					children [
+						USE	w6
+					]
+				}
+			]
+		}
+	]
+}
+
+Transform {
+	rotation 0 1 0 1.5707963267948966192313216916398
+	children [
+		USE	front
+		Transform {
+			rotation 0 1 0 1.5707963267948966192313216916398
+			children [
+				USE	front
+				Transform {
+					rotation 0 1 0 1.5707963267948966192313216916398
+					children [
+						USE	front
+					]
+				}
+			]
+		}
+	]
+}
+
+#stair
+Transform {
+	translation	-25 -6 -24
+	children [
+		Shape {
+			geometry IndexedFaceSet	{
+				coord Coordinate {
+					point [
+						0 0 0
+						12 0 0
+						0 12 0
+					]
+				}
+				coordIndex [
+					0 1 2 -1
+				]
+			}
+			appearance DEF stairapp Appearance {
+				material Material {
+					diffuseColor .33 .3 .28
+					specularColor .31 .25 .13
+					ambientIntensity .687
+					shininess .1
+				}
+			}
+		}
+
+		DEF stairtype Transform {
+			translation	12 0 -0.5
+			children [
+				Shape {
+					appearance USE stairapp
+					geometry Box {
+						size 0.15 0.15 1
+					}
+				}
+			]
+		}
+		DEF stairT3 Transform {
+			children [
+				DEF stairT2 Transform {
+					children [
+						DEF stairT1 Transform {
+							translation	-0.15 0.15 0
+							children [
+								USE	stairtype
+								Transform {
+									translation	-0.15 0.15 0
+									children [
+										USE	stairtype
+										Transform {
+											translation	-0.15 0.15 0
+											children [
+												USE	stairtype
+												Transform {
+													translation	-0.15 0.15 0
+													children [
+														USE	stairtype
+														Transform {
+															translation	-0.15 0.15 0
+															children [
+																USE	stairtype
+																Transform {
+																	translation	-0.15 0.15 0
+																	children [
+																		USE	stairtype
+																		Transform {
+																			translation	-0.15 0.15 0
+																			children [
+																				USE	stairtype
+																				Transform {
+																					translation	-0.15 0.15 0
+																					children [
+																						USE	stairtype
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+
+						Transform {
+							translation	-1.2 1.2 0
+
+							children [
+								USE	stairT1
+							]
+						}	
+					]
+				}
+				Transform {
+					translation	-2.4 2.4 0
+					children [
+						USE	stairT2
+						Transform {
+					translation	-2.4 2.4 0
+					children [
+						USE	stairT2
+						Transform {
+					translation	-2.4 2.4 0
+					children [
+						USE	stairT2
+						Transform {
+					translation	-2.4 2.4 0
+					children [
+						USE	stairT2
+					]
+				}
+					]
+				}
+					]
+				}
+					]
+				}
+			]
+		}
+		
+
+		
+	]
+}
+

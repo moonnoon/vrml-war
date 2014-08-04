@@ -1,0 +1,41 @@
+#VRML V2.0 utf8
+
+Transform {
+	children [
+		Transform {
+			children [
+				Shape {
+					geometry Sphere	{
+						radius 100
+					}
+					appearance Appearance {
+						material DEF bombtrans Material {
+							diffuseColor 0 0 0
+							specularColor .72 .76 .12
+							emissiveColor 1 .31 .37
+							ambientIntensity 0
+							shininess .05
+							transparency 0.3
+						}
+					}
+				}
+			]
+		}
+
+		DEF	bombtime TimeSensor	{
+			loop TRUE
+			#enabled	FALSE
+			cycleInterval 2
+		}
+		DEF	trans ScalarInterpolator {
+			key	[0 1]
+			keyValue [0 1]
+		}
+		DEF	scale ScalarInterpolator {
+			key	[0 1]
+			keyValue [0 100]
+		}
+	]
+}
+ROUTE bombtime.fraction_changed	TO trans.set_fraction
+ROUTE trans.value_changed TO bombtrans.transparency

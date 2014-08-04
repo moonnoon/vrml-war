@@ -1,0 +1,661 @@
+#VRML V2.0 utf8
+
+NavigationInfo {
+	avatarSize [3 11 5]
+}
+
+Viewpoint {
+	position 0 -49 -30
+	jump FALSE
+	description	"start"
+}
+Viewpoint {
+	position 0 -49 1900
+	jump FALSE
+	description	"second"
+	orientation	0 1 0 3.1415926535897932384626433832795
+}
+Viewpoint {
+	position -225 70 -250
+	jump FALSE
+	description	"wall"
+}
+Viewpoint {
+	position 0 -49 -600
+	jump FALSE
+	description	"enemy"
+}
+Viewpoint {
+	position 0 600 0
+	orientation	1 0 0 -1
+	jump FALSE
+	description	"all"
+}
+
+DirectionalLight {
+	on TRUE
+	direction 0 1 0
+}
+
+#Fog	{
+#	color 0 0 0
+#	fogType	"LINEAR"
+#	visibilityRange	20
+#}
+
+Sound {
+	location 0 0 0
+	direction 0 0 1
+	intensity 1
+	spatialize TRUE
+	maxBack	1000
+	maxFront 800
+	minBack	500
+	minFront 300
+	source AudioClip {
+		url	"./res/music/横山菁儿-英雄的黎明.wav"
+		loop TRUE
+	}
+}
+#Sound {
+#	location 0 0 -500
+#	direction 0 0 1
+#	intensity 1
+#	spatialize TRUE
+#	maxBack	1000
+#	maxFront 800
+#	minBack	500
+#	minFront 300
+#	source AudioClip {
+#		url	"./res/music/1.wav"
+#		loop TRUE
+#	}
+#}
+#end sound
+
+#wall
+Transform {
+	scale 10 10 10
+	children [
+		Inline {
+			url	"./include/wall.wrl"
+		}
+	]
+}
+#end wall
+
+
+
+#city
+Transform {
+	scale 0.75 0.75 0.75
+	rotation 0 1 0 3.1
+	translation	150 -76.5 -120
+	children [
+		Inline {
+			url	"./include/shouyang.wrl"
+		}
+	]
+}
+
+Transform {
+	scale 0.9 0.9 0.9
+	rotation 0 1 0 -0.48
+	translation	-60 -60 0
+	children [
+		Inline {
+			url	"./include/xiangetai.wrl"
+		}
+	]
+}
+
+#end city
+
+
+
+
+
+#trebuchet
+DEF trebuchet Transform {
+	children [
+		DEF trebuchetType Transform {
+			scale 0.8 0.8 0.8
+			rotation 0 1 0 3.1415926535897932384626433832795
+			translation	-250 82 -295
+			children [
+				DEF t Inline {
+					url	"./include/trebuchet.wrl"
+				}
+			]
+		}
+		Transform {
+			translation	50 0 0
+			children [
+				USE	trebuchetType
+				Transform {
+					translation	50 0 0
+					children [
+						USE	trebuchetType
+						Transform {
+							translation	50 0 0
+							children [
+								USE	trebuchetType
+								Transform {
+									translation	50 0 0
+									children [
+										USE	trebuchetType
+										Transform {
+											translation	50 0 0
+											children [
+												USE	trebuchetType
+												Transform {
+													translation	50 0 0
+													children [
+														USE	trebuchetType
+														Transform {
+															translation	50 0 0
+															children [
+																USE	trebuchetType
+																Transform {
+																	translation	50 0 0
+																	children [
+																		USE	trebuchetType
+																		Transform {
+																			translation	50 0 0
+																			children [
+																				USE	trebuchetType
+																				Transform {
+																					translation	50 0 0
+																					children [
+																						USE	trebuchetType
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
+
+#end trebuchet
+
+#bomb
+
+#end bomb
+
+
+#tower
+Transform	{
+	rotation 0 1 0 3.1415926535897932384626433832795
+	translation	-285 60 -280
+	scale 6 6 6
+	children	[
+		DEF	tower Transform {
+			children [
+				Inline {
+					url	"./include/tower.wrl"
+				}
+				
+			]
+		}
+		Transform {
+			translation	-95 0 0
+			children [
+				USE	tower
+			]
+		}
+		Transform {
+			translation	0 0 -93
+			rotation 0 1 0 3.1415926535897932384626433832795
+			children [
+				USE	tower
+			]
+		}
+		Transform {
+			translation	-95 0 -93
+			rotation 0 1 0 3.1415926535897932384626433832795
+			children [
+				USE	tower
+			]
+		}
+		
+	]
+}
+#end tower
+
+#ground
+Transform {
+	translation	0 -60 0
+	children [
+		Shape {
+			appearance Appearance {
+				texture	ImageTexture {
+					url	"res/textures/shouyang/2f137ac0.jpg"
+				}
+				textureTransform TextureTransform {
+					scale 5 5
+				}
+			}
+			geometry Box {
+				size 2000 0.1 5000
+			}
+		}
+	]
+}
+#end ground
+
+#sun
+Transform {
+	translation	-700 700 0
+	children [
+		Shape	{
+			geometry Sphere	{
+				radius 100
+			}
+			appearance Appearance {
+				material Material {
+					diffuseColor 0 0 0
+					#specularColor .72 .76 .12
+					emissiveColor 1 .31 .37
+					ambientIntensity 0
+					shininess .05
+				}
+			}
+		}
+	]
+}
+#end sun
+
+#shanmen
+Transform {
+	children [
+		Transform {
+			translation	0 -63 2000
+			children [
+				Inline {
+					url	"./include/shanmen.wrl"
+				}
+			]
+		}
+	]
+}
+#end shanmen
+
+
+
+#so many people
+
+#xuanxiao
+Transform {
+	children [
+		DEF xuanxiao Transform {
+			children [
+				Transform {
+					translation	0 -51.5 -200
+					children [
+						Inline {
+							url	"./include/xuanxiao.wrl"
+						}	
+					]
+				}
+				DEF	updownTime TimeSensor {
+					loop FALSE
+					cycleInterval 10
+				}
+				DEF	udPosInt PositionInterpolator {
+					key	[
+						0 0.25 0.5 0.75 1
+					]
+					keyValue [
+						0 1 0
+						0 2 0
+						0 1 0
+						0 0 0
+						0 1 0
+					]
+				}
+				DEF	psensor  ProximitySensor {
+					center 0 -60 -200
+					size 100 100 100
+				}
+				DEF	bwtouch TouchSensor	{
+					enabled	TRUE
+				}
+			]
+		}
+		DEF	xihe Transform	{
+			center 0 -51.5 -200
+			children [
+				Transform {
+					translation	0 -50 -207
+					
+					children [
+						DEF xihetype Transform {
+							rotation 0 1 0 1.5707963267948966192313216916398
+							children [
+								Transform {
+									rotation 0 0 1 1.5707963267948966192313216916398
+									children [
+										Inline {
+									url	"./include/xihe.wrl"
+								}
+									]
+								}
+								
+							]
+						}
+					]
+				}
+				DEF	xrot OrientationInterpolator {
+					key	[
+						0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1
+					]
+					keyValue [
+						0 1 0 0
+						0 1 0 1.5707963267948966192313216916398
+						0 1 0 3.1415926535897932384626433832795
+						0 1 0 4.7123889803846898576939650749193
+						0 1 0 0
+						0 1 0 1.5707963267948966192313216916398
+						0 1 0 3.1415926535897932384626433832795
+						0 1 0 4.7123889803846898576939650749193
+						0 1 0 0
+					]
+				}
+			]
+		}
+		DEF	wangshu Transform {
+			center 0 -51.5 -200
+			children [
+				Transform {
+					translation	0 -45 -193
+					
+					rotation 0 1 0 1.5707963267948966192313216916398
+					children [
+						Transform {
+							rotation 0 0 1 1.5707963267948966192313216916398
+							children [
+								Inline {
+									url	"./include/wangshu.wrl"
+								}
+							]
+						}
+						
+					]
+				}
+			]
+		}
+	]
+}
+
+ROUTE psensor.isActive TO updownTime.loop
+ROUTE updownTime.fraction_changed TO udPosInt.set_fraction
+ROUTE udPosInt.value_changed TO	xuanxiao.translation
+ROUTE updownTime.fraction_changed TO xrot.set_fraction
+ROUTE xrot.value_changed TO	xihe.rotation
+ROUTE xrot.value_changed TO	wangshu.rotation
+
+Transform {
+	children [
+		DEF	bigSword Transform {
+			children [
+				Transform {
+					translation	0 -54 -200
+					children [
+						DEF scale Transform {
+							scale 0.5 0.5 0.5
+							children [
+								USE	xihetype
+							]
+						}
+					]
+				}
+			]
+		}
+		DEF	rise PositionInterpolator {
+			key	[
+				0 1
+			]
+			keyValue [
+				0 0 0
+				0 350 0
+			]
+		}
+		DEF	risetime TimeSensor	{
+			loop FALSE
+			cycleInterval 8
+		}
+		DEF	largen PositionInterpolator {
+			key	[0 1]
+			keyValue [
+				5 5 5
+				50 50 50
+			]
+		}
+		DEF	loose TimeSensor {
+			loop FALSE
+			enabled	FALSE
+			cycleInterval 4
+		}
+		DEF	aimtime TimeSensor {
+			loop FALSE
+			enabled	FALSE
+			cycleInterval 3
+		}
+		DEF	aim OrientationInterpolator	{
+			key	[0 1]
+			keyValue [
+				1 0 0 0
+				1 0 0 1
+			]
+		}
+		DEF	rottime TimeSensor {
+			loop TRUE
+			enabled	FALSE
+			cycleInterval 0.01
+		}
+		DEF	selfrot OrientationInterpolator	{
+			key	[
+				0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1
+			]
+			keyValue [
+				0 1 0 0
+				0 1 0 1.5707963267948966192313216916398
+				0 1 0 3.1415926535897932384626433832795
+				0 1 0 4.7123889803846898576939650749193
+				0 1 0 0
+				0 1 0 1.5707963267948966192313216916398
+				0 1 0 3.1415926535897932384626433832795
+				0 1 0 4.7123889803846898576939650749193
+				0 1 0 0
+			]
+		}
+		DEF	bw Script {
+			eventIn	SFFloat draw
+			eventIn	SFFloat	aim
+			eventIn	SFFloat	loose
+			eventOut SFBool	baim
+			eventOut SFBool	brot
+			eventOut SFBool	bloose
+			field SFNode sword USE scale
+			field SFVec3f scale 1 1 1
+			field SFNode n USE bigSword
+			field SFVec3f temp 0 0 0
+			field SFVec3f oldt 0 0 0
+			field SFRotation oldr 0 0 0 0
+			field SFVec3f olds 0 0 0
+
+			url"javascript:
+			function initialize() {
+				bloose = false;
+				baim = false;
+				brot = false;
+				oldt = n.translation;
+				oldr = n.rotation;
+				olds = sword.scale;
+			}
+			function draw(va) {
+				scale = sword.scale;
+				scale[0] += 0.1;
+				scale[1] += 0.1;
+				scale[2] += 0.1;
+				sword.scale = scale;
+				if(va > 0.8) {
+					baim = true;
+				}
+			}
+			function aim(va) {
+				if (va > 0.8) {
+					brot = true;	
+				}
+				if(va > 0.99) {
+					bloose = true;
+				}
+			}
+			function loose(va) {
+				temp = n.translation;
+				temp[1] -= 4;
+				temp[2] -= 6.2296308986196089220278992298334;
+				n.translation = temp;
+				if(va > 0.99) {
+					bloose = false;
+					brot = false;
+					baim = false;
+				}
+				if(bloose == false) {
+					n.translation = oldt;
+					n.rotation = oldr;
+					sword.scale = olds;
+				}
+			}
+			"
+		}
+	]
+}
+
+#draw
+ROUTE bwtouch.touchTime	TO risetime.startTime
+ROUTE risetime.fraction_changed	TO rise.set_fraction
+ROUTE rise.value_changed TO	bigSword.translation
+ROUTE risetime.fraction_changed	TO bw.draw
+#aim
+ROUTE risetime.time	TO aimtime.startTime
+ROUTE bw.baim TO aimtime.enabled
+ROUTE aimtime.fraction_changed TO bw.aim
+ROUTE aimtime.fraction_changed TO aim.set_fraction
+ROUTE aim.value_changed	TO bigSword.rotation
+#rot
+ROUTE aimtime.time TO rottime.startTime
+ROUTE bw.brot TO rottime.enabled
+ROUTE rottime.fraction_changed TO selfrot.set_fraction
+ROUTE selfrot.value_changed	TO scale.rotation
+#loose
+ROUTE aimtime.time TO loose.startTime
+ROUTE bw.bloose TO loose.enabled
+ROUTE loose.fraction_changed TO	bw.loose
+#end xuanxiao
+
+
+#four major
+Transform {
+	children [
+		Transform {
+			rotation 0 1 0 3.1415926535897932384626433832795
+			translation	-18 60 -370
+			children [
+				Inline {
+					url	"./include/four.wrl"
+				}
+			]
+		}
+	]
+}
+#end four
+
+#girl
+Transform {
+	translation	-75 -47 130
+	rotation 0 1 0 3.1415926535897932384626433832795
+	children [
+		Inline {
+			url	"./include/girl.wrl"
+		}
+	]
+}
+#end girl
+
+#qionghua
+Transform {
+	children [
+		Transform {
+			translation	0 -47 2040
+			rotation 0 1 0 3.1415926535897932384626433832795
+			scale 0.8 0.8 0.8
+			children [
+				Inline	{
+					url	"./include/qionghua.wrl"
+				}
+			]
+		}
+	]
+}
+#end qionghua
+
+#evil
+
+Transform {
+	children [
+		Transform {
+			translation	0 -55 -870
+			children [
+				Inline	{
+					url	"./include/evil.wrl"
+				}
+			]
+		}
+		Transform {
+			translation	100 -55 -870
+			scale 0.3 0.3 0.3
+			children [
+				Inline {
+					url	"./include/evil2.wrl"
+				}
+			]	
+		}
+		Transform {
+			translation	-100 0 -870
+			scale 0.2 0.2 0.2
+			children [
+				Inline {
+					url	"./include/evil1.wrl"
+				}
+			]
+		}
+		Transform {
+			translation 0 -60 -700
+			scale 2 2 2
+			rotation 0 1 0 3.1415926535897932384626433832795
+			children [
+				Inline {
+					url	"./include/evil4.wrl"
+				}
+			]
+		}
+	]
+}
+
+#end evil
